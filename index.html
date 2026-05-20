@@ -8,36 +8,68 @@
       content="This page will redirect you to our app in the app store.">
     <script type="text/javascript">
       function executeRedirect() {
-        // Enable / disable debugging for testing:
-        var debug = false;
-        var googleStoreUrl = document.getElementById('https://play.google.com/store/apps/details?id=app.hiddify.com');
-        var appleStoreUrl = document.getElementById('https://apps.apple.com/ru/app/happ-proxy-utility-plus/id6746188973');
-        // Use Google Play Store as fallback by default (may be changed)!
-        var fallbackStoreUrl = 'https://www.happ.su/main/ru';
-
-
-        var userAgent = navigator.userAgent || navigator.vendor || window.opera;
-        // Android devices:
-        if (googleStoreUrl && /android/i.test(userAgent)) {
-          if (debug) { alert('Detected: Android device'); }
+        const debug = true;
+    
+        const googleStoreUrl =
+          'https://play.google.com/store/apps/details?id=app.hiddify.com';
+    
+        const appleStoreUrl =
+          'https://apps.apple.com/ru/app/happ-proxy-utility-plus/id6746188973';
+    
+        const windowsUrl =
+          'https://github.com/Happ-proxy/happ-desktop/releases/latest/download/setup-Happ.x64.exe';
+    
+        const linuxUrl =
+          'https://github.com/hiddify/hiddify-next/releases/latest';
+    
+        const fallbackStoreUrl =
+          'https://www.happ.su/main/ru';
+    
+        const userAgent =
+          navigator.userAgent || navigator.vendor || window.opera;
+    
+        // Android
+        if (/android/i.test(userAgent)) {
+          if (debug) alert('Detected: Android device');
+    
           window.location.href = googleStoreUrl;
+          return;
         }
-
-        // Apple devices:
-        else if (appleStoreUrl && /iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
-          if (debug) { alert('Detected: Apple device'); }
+    
+        // iPhone / iPad / macOS Safari
+        if (
+          /iPad|iPhone|iPod|Macintosh/i.test(userAgent) &&
+          navigator.vendor &&
+          navigator.vendor.includes('Apple')
+        ) {
+          if (debug) alert('Detected: Apple device');
+    
           window.location.href = appleStoreUrl;
+          return;
         }
-
-        // Fallback: Windows and other devices:
-        else if (fallbackStoreUrl) {
-          if (debug) { alert('Detected: Unknown device. Redirecting to fallback.'); }
-          // Otherwise redirct to the fallback store URL:
-          window.location.href = fallbackStoreUrl;
-        } else {
-          // Log error to console if no redirect was possible.
-          console.error('NO REDIRECT: User agent could not be detected and fallback app store url was not set.');
+    
+        // Windows
+        if (/Win/i.test(userAgent)) {
+          if (debug) alert('Detected: Windows device');
+    
+          window.location.href = windowsUrl;
+          return;
         }
+    
+        // Linux
+        if (/Linux/i.test(userAgent) && !/Android/i.test(userAgent)) {
+          if (debug) alert('Detected: Linux device');
+    
+          window.location.href = linuxUrl;
+          return;
+        }
+    
+        // Fallback
+        if (debug) {
+          alert('Detected: Unknown device. Redirecting to fallback.');
+        }
+    
+        window.location.href = fallbackStoreUrl;
       }
     </script>
     <style>
