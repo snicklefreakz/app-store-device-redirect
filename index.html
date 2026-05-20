@@ -10,10 +10,10 @@
       function executeRedirect() {
         // Enable / disable debugging for testing:
         var debug = true;
-        var googleStoreUrl = document.getElementById('google-store-link');
-        var appleStoreUrl = document.getElementById('apple-store-link');
+        var googleStoreUrl = document.getElementById('https://play.google.com/store/apps/details?id=app.hiddify.com');
+        var appleStoreUrl = document.getElementById('https://apps.apple.com/ru/app/happ-proxy-utility-plus/id6746188973');
         // Use Google Play Store as fallback by default (may be changed)!
-        var fallbackStoreUrl = googleStoreUrl;
+        var fallbackStoreUrl = 'https://www.happ.su/main/ru';
 
 
         var userAgent = navigator.userAgent || navigator.vendor || window.opera;
@@ -156,15 +156,15 @@
       <div id="stores" class="row">
         <div class="store column" id="g">
           <div class="button-wrapper ci-color">
-            <a href="https://play.google.com/store/apps/details?id=[PACKAGE-NAME]"
-              id="google-store-link"><strong>[APP-NAME]</strong><br />in Google Play
+            <a href="https://play.google.com/store/apps/details?id=app.hiddify.com"
+              id="google-store-link"><strong>[Hiddify]</strong><br />in Google Play
               Store</a>
           </div>
         </div>
         <div class="store column" id="a">
           <div class="button-wrapper ci-color">
-            <a href="http://apps.apple.com/[COUNTRY]/app/[APP-NAME]/id[STORE-ID]]"
-              id="apple-store-link"><strong>[APP-NAME]</strong><br />in Apple App
+            <a href="https://apps.apple.com/ru/app/happ-proxy-utility-plus/id6746188973"
+              id="apple-store-link"><strong>[Happ]</strong><br />in Apple App
               Store</a>
           </div>
         </div>
