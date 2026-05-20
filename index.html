@@ -82,11 +82,7 @@
       }
 
       // Apple devices + macOS Safari
-      if (
-        /iPad|iPhone|iPod|Macintosh/i.test(ua) &&
-        navigator.vendor &&
-        navigator.vendor.includes('Apple')
-      ) {
+      if (/iPad|iPhone|iPod|Macintosh/i.test(ua)) {
         window.location.replace(links.apple);
         return;
       }
